@@ -40,8 +40,16 @@ function App() {
     setChosenPokemon(newInfo);
   }
 
+  const calculateValueToTrade = () => {
+    let valueToTrade = 0;
+
+    chosenPokemon.forEach(pokemon => valueToTrade += pokemon.rarity);
+
+    return valueToTrade;
+  }
+
   const evaluatePokemons = () => {
-    let valueToTrade = 7;
+    let valueToTrade = calculateValueToTrade();
     let sortedPokemons = [...capturedPokemons]
     let couldAnswer = true;
 
