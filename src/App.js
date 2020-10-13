@@ -6,6 +6,8 @@ function App() {
   const [pokemons, setPokemons] = useState([]);
   const [capturedPokemons, setCapturedPokemons] = useState([]);
   const [pokemonsPoints, setPokemonsPoints] = useState(0);
+  const [result, setResult] = useState([]);
+  const [couldAnswer, setCouldAnswer] = useState(true);
 
   useEffect(() => {
     setPokemons(PokemonsJson);
@@ -19,7 +21,7 @@ function App() {
   const getInitialPokemons = (pokemons) => {
     let tmpPoints = 0;
     let tmpCapturedPokemons = [];
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 9; i++) {
       var chosenPokemon = pokemons[Math.floor(Math.random() * pokemons.length)];
       tmpCapturedPokemons.push(chosenPokemon);
       tmpPoints += getPokemontPoints(chosenPokemon);
@@ -29,8 +31,39 @@ function App() {
   };
 
   const getPokemontPoints = (pokemon) => {
-    return parseInt(pokemon.rarity);
+    return pokemon.rarity;
   };
+
+  const choosePokemons = () => {
+    let valueToTrade = 7;
+    let sortedPokemons = [...capturedPokemons]
+    let couldAnswer = true;
+
+    sortedPokemons.sort((a, b) => {
+      if (a.rarity < b.rarity) return 1
+      if (a.rarity > b.rarity) return -1
+      return 0
+    })
+
+    const result = []
+
+    while(valueToTrade > 0) {
+      const index = sortedPokemons.findIndex(pokemon => pokemon.rarity <= valueToTrade);
+      if (index >= 0) {
+        result.push(sortedPokemons[index]);
+        valueToTrade -= sortedPokemons[index].rarity
+        sortedPokemons.splice(index, 1);
+      } else {
+        valueToTrade = 0;
+        couldAnswer = false;
+        console.log('Não é possível fazer uma troca exata')
+      }
+    }
+    if(couldAnswer) {
+      setResult(result);
+      console.log(result)
+    }
+  }
 
   return (
     <div className="bg-light" style={{ height: "100vh" }}>
@@ -130,7 +163,7 @@ function App() {
         </div>
         <div className="row ">
           <div className="col mt-4 d-flex justify-content-center">
-            <button className="btn btn-primary w-50"  type="button">
+            <button onClick={choosePokemons} className="btn btn-primary w-50"  type="button">
               Avaliar possibilidade
             </button>
           </div>
