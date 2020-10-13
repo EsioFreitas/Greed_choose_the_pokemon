@@ -1,4 +1,5 @@
 import React from "react";
+import "./App.css";
 
 function App() {
   return (
@@ -14,8 +15,98 @@ function App() {
           <p>History</p>
         </div>
         <div className="row">
-          <div className="col"></div>
-          <div className="col"></div>
+          <div className="col">
+            <div className="row">
+              <div className="col">
+                <div className="card p-2">
+                  <img src="..." className="card-img-top" alt="..." />
+                  <div className="card-body m-0 p-0">
+                    <h5 className="card-title text-center">Entei</h5>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col">
+                <div className="card p-2">
+                  <img src="..." className="card-img-top" alt="..." />
+                  <div className="card-body m-0 p-0">
+                    <h5 className="card-title text-center">Entei</h5>
+                  </div>
+                </div>
+              </div>
+
+              <div className="col">
+                <div className="card p-2">
+                  <img src="..." className="card-img-top" alt="..." />
+                  <div className="card-body m-0 p-0">
+                    <h5 className="card-title text-center">Entei</h5>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className="col">
+            <div className="row">
+              <div className="col">
+                <div className="input-group mb-3">
+                  <input
+                    type="text"
+                    className="form-control"
+                    placeholder="Nome do pokemon"
+                    aria-label="Nome do pokemon"
+                    aria-describedby="button-addon2"
+                  />
+                  <div className="input-group-append">
+                    <button
+                      className="btn btn-outline-primary"
+                      type="button"
+                      id="button-addon2"
+                    >
+                      Pesquisar
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="row">
+              <div className="col">
+                <div className="card p-2">
+                  <img src="..." className="card-img-top" alt="..." />
+                  <div className="card-body m-0 p-0">
+                    <h5 className="card-title text-center">Entei</h5>
+                  </div>
+                  <a href="#" className="btn btn-primary">
+                    Escolher
+                  </a>
+                </div>
+              </div>
+
+              <div className="col">
+                <div className="card p-2">
+                  <img src="..." className="card-img-top" alt="..." />
+                  <div className="card-body m-0 p-0">
+                    <h5 className="card-title text-center">Entei</h5>
+                  </div>
+                  <a href="#" className="btn btn-primary">
+                    Escolher
+                  </a>
+                </div>
+              </div>
+
+              <div className="col">
+                <div className="card p-2">
+                  <img src="..." className="card-img-top" alt="..." />
+                  <div className="card-body m-0 p-0">
+                    <h5 className="card-title text-center">Entei</h5>
+                  </div>
+                  <a href="#" className="btn btn-primary">
+                    Escolher
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
