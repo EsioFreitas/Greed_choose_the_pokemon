@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
 import "./App.css";
-import PokemonsJson from "./utils/pokemons.js";
-
-const MAX_POINTS = 10;
+import PokemonsJson from "./utils/pokemonRarity";
 
 function App() {
   const [pokemons, setPokemons] = useState([]);
@@ -10,8 +8,8 @@ function App() {
   const [pokemonsPoints, setPokemonsPoints] = useState(0);
 
   useEffect(() => {
-    setPokemons(PokemonsJson.pokemons);
-    getInitialPokemons(PokemonsJson.pokemons);
+    setPokemons(PokemonsJson);
+    getInitialPokemons(PokemonsJson);
   }, []);
 
   const searchPokemon = (pokemon) => {
@@ -19,27 +17,19 @@ function App() {
   };
 
   const getInitialPokemons = (pokemons) => {
-    let tmpPoints = MAX_POINTS;
+    let tmpPoints = 0;
     let tmpCapturedPokemons = [];
-    while (tmpPoints > 0) {
+    for (let i = 0; i < 6; i++) {
       var chosenPokemon = pokemons[Math.floor(Math.random() * pokemons.length)];
-
-      if (tmpPoints - getPokemontPoints(chosenPokemon) < 0) {
-        break;
-      }
-      console.log(tmpPoints);
-
       tmpCapturedPokemons.push(chosenPokemon);
-      tmpPoints -= getPokemontPoints(chosenPokemon);
+      tmpPoints += getPokemontPoints(chosenPokemon);
     }
-
     setCapturedPokemons(tmpCapturedPokemons);
-    setPokemonsPoints(MAX_POINTS - tmpPoints);
-    console.log(MAX_POINTS, tmpPoints, MAX_POINTS - tmpPoints);
+    setPokemonsPoints(tmpPoints);
   };
 
   const getPokemontPoints = (pokemon) => {
-    return pokemon.spawn_chance;
+    return parseInt(pokemon.rarity);
   };
 
   return (
@@ -61,9 +51,7 @@ function App() {
                 <div className="card">
                   <div className="card-body p-2">
                     <h6 className="card-title text-center m-0 p-0">
-                      {`Pontuação da pokedex: ${pokemonsPoints.toFixed(
-                        3
-                      )}/${MAX_POINTS}`}
+                      {`Pontuação da pokedex: ${pokemonsPoints}`}
                     </h6>
                   </div>
                 </div>
@@ -119,7 +107,7 @@ function App() {
               <div className="col">
                 <div className="pokemons-grid">
                   {pokemons.map((pokemon) => (
-                    <div className="card p-2">
+                    <div key={pokemon.id} className="card p-2">
                       <img
                         src={pokemon.img}
                         className="card-img-top"
@@ -130,9 +118,9 @@ function App() {
                           {`${pokemon.name} - ${getPokemontPoints(pokemon)}`}
                         </h6>
                       </div>
-                      <a href="#" className="btn btn-primary">
+                      <button onClick={() => console.log(pokemon.name)} className="btn btn-primary">
                         Escolher
-                      </a>
+                      </button>
                     </div>
                   ))}
                 </div>
