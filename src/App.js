@@ -1,24 +1,23 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="bg-light" style={{ height: "100vh" }}>
+      <div className="container">
+        <div className="text-center mb-5 pt-4" style={{ color: "#353535" }}>
+          <h1 className="mb-3">
+            Projeto{" "}
+            <span className="bold-text" style={{ color: "#EF5350" }}>
+              Escolha o Pokemon
+            </span>
+          </h1>
+          <p>History</p>
+        </div>
+        <div className="row">
+          <div className="col"></div>
+          <div className="col"></div>
+        </div>
+      </div>
     </div>
   );
 }
