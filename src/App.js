@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
+import PokemonsJson from "./utils/pokemons.js";
 
 function App() {
+  const [pokemons, setPokemons] = useState([]);
+
+  useEffect(() => {
+    setPokemons(PokemonsJson.pokemons);
+  }, []);
+  
   return (
     <div className="bg-light" style={{ height: "100vh" }}>
       <div className="container">
@@ -71,38 +78,24 @@ function App() {
             </div>
             <div className="row">
               <div className="col">
-                <div className="card p-2">
-                  <img src="..." className="card-img-top" alt="..." />
-                  <div className="card-body m-0 p-0">
-                    <h5 className="card-title text-center">Entei</h5>
-                  </div>
-                  <a href="#" className="btn btn-primary">
-                    Escolher
-                  </a>
-                </div>
-              </div>
-
-              <div className="col">
-                <div className="card p-2">
-                  <img src="..." className="card-img-top" alt="..." />
-                  <div className="card-body m-0 p-0">
-                    <h5 className="card-title text-center">Entei</h5>
-                  </div>
-                  <a href="#" className="btn btn-primary">
-                    Escolher
-                  </a>
-                </div>
-              </div>
-
-              <div className="col">
-                <div className="card p-2">
-                  <img src="..." className="card-img-top" alt="..." />
-                  <div className="card-body m-0 p-0">
-                    <h5 className="card-title text-center">Entei</h5>
-                  </div>
-                  <a href="#" className="btn btn-primary">
-                    Escolher
-                  </a>
+                <div className="pokemons-grid">
+                  {pokemons.map((pokemon) => (
+                    <div className="card p-2">
+                      <img
+                        src={pokemon.img}
+                        className="card-img-top"
+                        alt="..."
+                      />
+                      <div className="card-body m-0 p-0">
+                        <h5 className="card-title text-center">
+                          {pokemon.name}
+                        </h5>
+                      </div>
+                      <a href="#" className="btn btn-primary">
+                        Escolher
+                      </a>
+                    </div>
+                  ))}
                 </div>
               </div>
             </div>

@@ -17,3 +17,11 @@
   background-color: #da4f4c;
   border-color: #da4f4c;  
 }
+
+.pokemons-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: .5rem;
+  height: 25rem;
+  overflow: auto;
+}
