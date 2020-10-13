@@ -7,6 +7,7 @@ const MAX_POINTS = 10;
 function App() {
   const [pokemons, setPokemons] = useState([]);
   const [capturedPokemons, setCapturedPokemons] = useState([]);
+  const [pokemonsPoints, setPokemonsPoints] = useState(0);
 
   useEffect(() => {
     setPokemons(PokemonsJson.pokemons);
@@ -22,22 +23,29 @@ function App() {
     let tmpCapturedPokemons = [];
     while (tmpPoints > 0) {
       var chosenPokemon = pokemons[Math.floor(Math.random() * pokemons.length)];
+
+      if (tmpPoints - getPokemontPoints(chosenPokemon) < 0) {
+        break;
+      }
+      console.log(tmpPoints);
+
       tmpCapturedPokemons.push(chosenPokemon);
       tmpPoints -= getPokemontPoints(chosenPokemon);
     }
 
     setCapturedPokemons(tmpCapturedPokemons);
+    setPokemonsPoints(MAX_POINTS - tmpPoints);
+    console.log(MAX_POINTS, tmpPoints, MAX_POINTS - tmpPoints);
   };
 
   const getPokemontPoints = (pokemon) => {
-    console.log(pokemon);
     return pokemon.spawn_chance;
   };
 
   return (
     <div className="bg-light" style={{ height: "100vh" }}>
       <div className="container">
-        <div className="text-center mb-5 pt-4" style={{ color: "#353535" }}>
+        <div className="text-center mb-4 pt-4" style={{ color: "#353535" }}>
           <h1 className="mb-3">
             Projeto{" "}
             <span className="bold-text" style={{ color: "#EF5350" }}>
@@ -49,6 +57,19 @@ function App() {
         <div className="row">
           <div className="col">
             <div className="row">
+              <div className="col mb-3">
+                <div className="card">
+                  <div className="card-body p-2">
+                    <h6 className="card-title text-center m-0 p-0">
+                      {`Pontuação da pokedex: ${pokemonsPoints.toFixed(
+                        3
+                      )}/${MAX_POINTS}`}
+                    </h6>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="row">
               <div className="col">
                 <div className="pokemons-grid">
                   {capturedPokemons.map((pokemon) => (
@@ -59,9 +80,9 @@ function App() {
                         alt="..."
                       />
                       <div className="card-body m-0 p-0">
-                        <h5 className="card-title text-center">
-                          {pokemon.name}
-                        </h5>
+                        <h6 className="card-title text-center">
+                          {`${pokemon.name} - ${getPokemontPoints(pokemon)}`}
+                        </h6>
                       </div>
                     </div>
                   ))}
@@ -105,9 +126,9 @@ function App() {
                         alt="..."
                       />
                       <div className="card-body m-0 p-0">
-                        <h5 className="card-title text-center">
-                          {pokemon.name}
-                        </h5>
+                        <h6 className="card-title text-center">
+                          {`${pokemon.name} - ${getPokemontPoints(pokemon)}`}
+                        </h6>
                       </div>
                       <a href="#" className="btn btn-primary">
                         Escolher
@@ -117,6 +138,13 @@ function App() {
                 </div>
               </div>
             </div>
+          </div>
+        </div>
+        <div className="row ">
+          <div className="col mt-4 d-flex justify-content-center">
+            <button className="btn btn-primary w-50"  type="button">
+              Avaliar possibilidade
+            </button>
           </div>
         </div>
       </div>
