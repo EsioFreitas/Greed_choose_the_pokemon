@@ -8,6 +8,7 @@ function App() {
   const [pokemonsPoints, setPokemonsPoints] = useState(0);
   const [result, setResult] = useState([]);
   const [couldAnswer, setCouldAnswer] = useState(true);
+  const [chosenPokemon, setChosenPokemon] = useState([]);
 
   useEffect(() => {
     setPokemons(PokemonsJson);
@@ -34,7 +35,12 @@ function App() {
     return pokemon.rarity;
   };
 
-  const choosePokemons = () => {
+  const choosePokemon = (pokemon) => {
+    const newInfo = [...chosenPokemon, pokemon];
+    setChosenPokemon(newInfo);
+  }
+
+  const evaluatePokemons = () => {
     let valueToTrade = 7;
     let sortedPokemons = [...capturedPokemons]
     let couldAnswer = true;
@@ -151,7 +157,7 @@ function App() {
                           {`${pokemon.name} - ${getPokemontPoints(pokemon)}`}
                         </h6>
                       </div>
-                      <button onClick={() => console.log(pokemon.name)} className="btn btn-primary">
+                      <button onClick={() => choosePokemon(pokemon)} className="btn btn-primary">
                         Escolher
                       </button>
                     </div>
@@ -163,7 +169,7 @@ function App() {
         </div>
         <div className="row ">
           <div className="col mt-4 d-flex justify-content-center">
-            <button onClick={choosePokemons} className="btn btn-primary w-50"  type="button">
+            <button onClick={evaluatePokemons} className="btn btn-primary w-50"  type="button">
               Avaliar possibilidade
             </button>
           </div>
