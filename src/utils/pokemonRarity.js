@@ -19,7 +19,7 @@ pokemons = pokemons.map(mon => {
     Object.keys(rarities).forEach(rarity => {
         const isIn = rarities[rarity].includes(mon.name);
         if (isIn) {
-            mon.rarity = rarity;
+            mon.rarity = parseInt(rarity);
         }
     })
     return mon;
