@@ -17,7 +17,15 @@ justa, ele está usando a raridade dos pokémons como critério.
 Escolha quais pokémons você quer e vamos te dizer qual é o menor
 número de pokémons que você precisa transferir para trocar.
 
+## Vídeo
+
+O vídeo com a explicação do projeto pode ser visto [aqui](https://github.com/projeto-de-algoritmos/Greed_choose_the_pokemon/blob/master/video.mp4).
+
 ## Screenshots
+
+![](https://raw.githubusercontent.com/projeto-de-algoritmos/Greed_choose_the_pokemon/master/img/Screenshot%20from%202020-10-15%2017-54-07.png)
+![](https://raw.githubusercontent.com/projeto-de-algoritmos/Greed_choose_the_pokemon/master/img/Screenshot%20from%202020-10-15%2017-54-32.png)
+![](https://raw.githubusercontent.com/projeto-de-algoritmos/Greed_choose_the_pokemon/master/img/Screenshot%20from%202020-10-15%2017-54-53.png)
 
 ## Instalação
 
