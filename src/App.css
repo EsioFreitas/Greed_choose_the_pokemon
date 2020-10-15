@@ -35,7 +35,7 @@
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 0.5rem;
-    height: 15rem;
+    height: 40vh;
     overflow: auto;
     box-shadow: none !important;
 }
@@ -73,3 +73,19 @@
     overflow: auto;
     box-shadow: none !important;
 }
+
+/* width */
+::-webkit-scrollbar {
+    width: 8px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #ef5350;
+    border-radius: 4px;
+  }

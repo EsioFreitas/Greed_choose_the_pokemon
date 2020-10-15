@@ -92,7 +92,7 @@ function App() {
         <div className="text-center mb-4 pt-4" style={{ color: "#353535" }}>
           <h1 className="mb-3">
             Projeto{" "}
-            <span className="bold-text" style={{ color: "#EF5350" }}>
+            <span className="bold-text" style={{ color: "#EF5350", fontWeight: 'bold' }}>
               Escolha o Pokemon
             </span>
           </h1>
