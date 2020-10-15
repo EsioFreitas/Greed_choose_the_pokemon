@@ -23,7 +23,7 @@ número de pokémons que você precisa transferir para trocar.
 
 Linguagem: JavaScript<br>
 
-Fizemos o deploy da aplicação para facilitar o uso dela [AQUI]().
+Fizemos o deploy da aplicação para facilitar o uso dela [AQUI](https://choose-pokemon.netlify.app).
 No entanto, caso queira rodá-la, é necessário que possua instalado:
 
 - [Node](https://nodejs.org/en/) e
