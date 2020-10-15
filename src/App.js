@@ -5,32 +5,24 @@ import PokemonsJson from "./utils/pokemonRarity";
 function App() {
   const [pokemons, setPokemons] = useState([]);
   const [capturedPokemons, setCapturedPokemons] = useState([]);
-  const [pokemonsPoints, setPokemonsPoints] = useState(0);
   const [exchangedPokemons, setExchangedPokemons] = useState([]);
-  const [couldAnswer, setCouldAnswer] = useState(true);
   const [openModal, setOpenModal] = useState(false);
   const [chosenPokemon, setChosenPokemon] = useState([]);
 
   useEffect(() => {
+    const getInitialPokemons = (pokemons) => {
+      let tmpCapturedPokemons = [];
+      for (let i = 0; i < 9; i++) {
+        var chosenPokemon = pokemons[Math.floor(Math.random() * pokemons.length)];
+        tmpCapturedPokemons.push(chosenPokemon);
+      }
+      setCapturedPokemons(tmpCapturedPokemons);
+    };
+
     setPokemons(PokemonsJson);
     getInitialPokemons(PokemonsJson);
   }, []);
 
-  const searchPokemon = (pokemon) => {
-    console.log(pokemon);
-  };
-
-  const getInitialPokemons = (pokemons) => {
-    let tmpPoints = 0;
-    let tmpCapturedPokemons = [];
-    for (let i = 0; i < 9; i++) {
-      var chosenPokemon = pokemons[Math.floor(Math.random() * pokemons.length)];
-      tmpCapturedPokemons.push(chosenPokemon);
-      tmpPoints += getPokemontPoints(chosenPokemon);
-    }
-    setCapturedPokemons(tmpCapturedPokemons);
-    setPokemonsPoints(tmpPoints);
-  };
 
   const getPokemontPoints = (pokemon) => {
     return pokemon.rarity;
@@ -72,6 +64,7 @@ function App() {
 
     while (valueToTrade > 0) {
       const index = sortedPokemons.findIndex(
+        // eslint-disable-next-line
         (pokemon) => pokemon.rarity <= valueToTrade
       );
       if (index >= 0) {
